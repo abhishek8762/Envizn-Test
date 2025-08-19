@@ -1,4 +1,3 @@
-// src/components/ExperienceSlider.js
 import { useState } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import high1 from "./../assets/high1.png";
@@ -6,7 +5,7 @@ import high2 from "./../assets/high2.png";
 
 const slides = [
   {
-    img: high1, // replace with your imported image
+    img: high1,
     caption: "Balinese Day with a local family",
   },
   {

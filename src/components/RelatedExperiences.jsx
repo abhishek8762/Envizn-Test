@@ -38,13 +38,12 @@ const Recommendations = () => {
   const [index, setIndex] = useState(0);
   const [itemsPerSlide, setItemsPerSlide] = useState(3);
 
-  // detect screen width and adjust cards per slide
   useEffect(() => {
     const updateItemsPerSlide = () => {
       if (window.innerWidth < 768) {
-        setItemsPerSlide(1); // mobile: 1 card
+        setItemsPerSlide(1);
       } else {
-        setItemsPerSlide(3); // desktop: 3 cards
+        setItemsPerSlide(3);
       }
     };
 

@@ -1,10 +1,8 @@
-// src/components/AvailableDates.js
 import React, { useEffect, useState } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 
 const AvailableDates = () => {
-  // load saved date or default empty
   const [selectedDate, setSelectedDate] = useState(() => {
     const savedDate = localStorage.getItem("selectedDate");
     return savedDate ? new Date(savedDate) : null;

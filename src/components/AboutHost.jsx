@@ -1,4 +1,3 @@
-// src/components/AboutHost.js
 import React from "react";
 import lady from "./../assets/lady.jpg";
 import { ArrowRight } from "lucide-react";

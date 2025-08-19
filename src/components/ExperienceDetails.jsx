@@ -3,7 +3,6 @@ import { ArrowRight, Gem, Leaf, Heart, Compass } from "lucide-react";
 const ExperienceDetails = () => {
   return (
     <section className="px-4 sm:px-8 lg:px-16 py-8 flex flex-col lg:flex-row gap-8">
-      {/* Left Content */}
       <div className="w-full lg:w-2/3">
         <div className="text-2xl sm:text-3xl text-green-900 font-bold mb-7 leading-snug">
           Experience a Day with a Balinese Family
@@ -43,7 +42,6 @@ const ExperienceDetails = () => {
         </ul>
       </div>
 
-      {/* Right Booking Box */}
       <div className="w-full lg:w-1/3 bg-orange-100 border-r-2 border-r-orange-600 border-b-2 border-b-orange-600 p-6 rounded shadow">
         <div className="flex items-center mb-4">
           <span className="text-yellow-400 text-lg sm:text-xl">★★★★★</span>

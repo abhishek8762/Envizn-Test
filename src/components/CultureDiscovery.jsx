@@ -1,4 +1,3 @@
-import React from "react";
 import { ArrowRight, Gem, Leaf, Heart, Compass } from "lucide-react";
 
 const CultureDiscovery = () => {
