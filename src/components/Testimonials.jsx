@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const reviews = [
@@ -24,30 +24,51 @@ const reviews = [
 
 const Reviews = () => {
   const [index, setIndex] = useState(0);
+  const [itemsPerSlide, setItemsPerSlide] = useState(3);
+
+  // watch screen size and adjust how many items to show
+  useEffect(() => {
+    const updateItemsPerSlide = () => {
+      if (window.innerWidth < 768) {
+        setItemsPerSlide(1); // mobile: 1 review at a time
+      } else {
+        setItemsPerSlide(3); // desktop: show all 3
+      }
+    };
+
+    updateItemsPerSlide();
+    window.addEventListener("resize", updateItemsPerSlide);
+    return () => window.removeEventListener("resize", updateItemsPerSlide);
+  }, []);
 
   const prevReview = () => {
-    setIndex((prev) => (prev === 0 ? reviews.length - 1 : prev - 1));
+    setIndex((prev) =>
+      prev === 0 ? reviews.length - itemsPerSlide : prev - 1
+    );
   };
 
   const nextReview = () => {
-    setIndex((prev) => (prev === reviews.length - 1 ? 0 : prev + 1));
+    setIndex((prev) => (prev >= reviews.length - itemsPerSlide ? 0 : prev + 1));
   };
 
   return (
     <section className="px-8 py-12 bg-cream">
       <div className="text-center mb-8">
-        <div className="text-5xl text-green-900 font-bold mb-4">
-          What our escapees says about us
+        <div className="text-3xl md:text-5xl text-green-900 font-bold mb-4">
+          What our escapees say about us
         </div>
-        <p className="text-gray-600">
+        <p className="text-gray-600 max-w-2xl mx-auto">
           See how escapees from around the world experienced the real Bali —
           curated with care, heart, and local soul.
         </p>
       </div>
 
       <div className="flex justify-center gap-6">
-        {reviews.slice(index, index + 3).map((review, idx) => (
-          <div key={idx} className="bg-white rounded-lg shadow-md p-6 max-w-sm">
+        {reviews.slice(index, index + itemsPerSlide).map((review, idx) => (
+          <div
+            key={idx}
+            className="bg-white rounded-lg shadow-md p-6 max-w-sm flex flex-col"
+          >
             <div className="text-yellow-500 mb-3">
               {"★".repeat(review.stars)}
             </div>

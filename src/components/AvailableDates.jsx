@@ -32,15 +32,16 @@ const AvailableDates = () => {
       <div className="text-3xl text-green-900 font-bold mb-4 ">
         Next Available Dates
       </div>
-      <div className="bg-white p-4 rounded">
+      <div className="bg-white p-1 rounded">
         <div className="atsro-section1">
-          <div className="total-container-users border-none">
+          <div className="total-container-users border-none  ">
             <Calendar
               onChange={(date) => {
                 setSelectedDate(date);
                 setCurrentPage(1);
               }}
               value={selectedDate}
+              c
             />
             {/* <button
               className="date-clear mt-4 px-3 py-1 border rounded"

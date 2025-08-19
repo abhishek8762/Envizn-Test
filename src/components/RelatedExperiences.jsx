@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import like1 from "./../assets/like1.jpg";
 import like2 from "./../assets/like2.jpg";
@@ -36,25 +36,45 @@ const recommendations = [
 
 const Recommendations = () => {
   const [index, setIndex] = useState(0);
+  const [itemsPerSlide, setItemsPerSlide] = useState(3);
+
+  // detect screen width and adjust cards per slide
+  useEffect(() => {
+    const updateItemsPerSlide = () => {
+      if (window.innerWidth < 768) {
+        setItemsPerSlide(1); // mobile: 1 card
+      } else {
+        setItemsPerSlide(3); // desktop: 3 cards
+      }
+    };
+
+    updateItemsPerSlide();
+    window.addEventListener("resize", updateItemsPerSlide);
+    return () => window.removeEventListener("resize", updateItemsPerSlide);
+  }, []);
 
   const prevSlide = () => {
-    setIndex((prev) => (prev === 0 ? recommendations.length - 1 : prev - 1));
+    setIndex((prev) =>
+      prev === 0 ? recommendations.length - itemsPerSlide : prev - 1
+    );
   };
 
   const nextSlide = () => {
-    setIndex((prev) => (prev === recommendations.length - 1 ? 0 : prev + 1));
+    setIndex((prev) =>
+      prev >= recommendations.length - itemsPerSlide ? 0 : prev + 1
+    );
   };
 
   return (
     <section className="px-8 py-12 bg-white">
       <div className="text-center mb-10">
-        <div className="text-5xl text-green-900 font-bold mb-4">
+        <div className="text-3xl md:text-5xl text-green-900 font-bold mb-4">
           You may also like
         </div>
       </div>
 
       <div className="flex justify-center gap-6">
-        {recommendations.slice(index, index + 3).map((item) => (
+        {recommendations.slice(index, index + itemsPerSlide).map((item) => (
           <div
             key={item.id}
             className="bg-white rounded-xl shadow-md overflow-hidden max-w-sm flex flex-col"
@@ -70,7 +90,7 @@ const Recommendations = () => {
                 {item.tags.map((tag, idx) => (
                   <span
                     key={idx}
-                    className="bg-green-800  text-white text-xs px-2 py-1 rounded-full"
+                    className="bg-green-800 text-white text-xs px-2 py-1 rounded-full"
                   >
                     {tag}
                   </span>
@@ -87,7 +107,7 @@ const Recommendations = () => {
                 <button className="bg-green-900 text-white px-4 py-2 rounded-2xl">
                   Book Escape
                 </button>
-                <button className="underline  px-4 py-2 ">Read More</button>
+                <button className="underline px-4 py-2">Read More</button>
               </div>
             </div>
           </div>

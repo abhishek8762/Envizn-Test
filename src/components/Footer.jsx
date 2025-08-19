@@ -3,7 +3,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="bg-green-950 text-white py-15 mt-10 relative">
+    <footer className="bg-green-950 text-white py-10 mt-10 relative">
       <div className="absolute inset-0 bg-[url('/src/assets/leaf-pattern.png')] opacity-10"></div>
 
       <div className="relative max-w-5xl mx-auto text-center">

@@ -59,7 +59,7 @@ const Hero = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-5 gap-4 bg-orange-100 border-1 rounded-4xl shadow-sm p-6 text-center max-w-5xl mx-auto">
+      <div className="grid grid-cols-5 gap-12 bg-orange-100 border-1 rounded-4xl shadow-sm p-6  text-center max-w-5xl mx-auto">
         <div className="flex flex-col items-center">
           <MapPin className="text-orange-500 mb-2" />
           <span className="font-medium">Location</span>

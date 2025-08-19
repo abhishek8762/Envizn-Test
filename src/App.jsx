@@ -13,7 +13,7 @@ import Footer from "./components/Footer";
 
 function App() {
   return (
-    <div className="min-h-screen bg-beige">
+    <div className="max-w-screen overflow-hidden">
       <Header />
       <Hero />
       <ExperienceDetails />

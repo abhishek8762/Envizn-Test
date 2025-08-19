@@ -9,8 +9,8 @@ const AdditionalInfo = () => {
   };
 
   return (
-    <section className="justify-center px-15 py-8">
-      <div className="text-3xl text-green-900 font-bold mb-4 ">
+    <section className="justify-center px-12 py-8 ">
+      <div className="text-3xl text-green-900  font-bold mb-4 ">
         Additional Information
       </div>
       <div className="divide-y divide-gray-300">
